@@ -1,0 +1,37 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-menu-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+<link rel="import" href="shadow-menu-shared-styles.html">
+
+<dom-module id="shadow-menu">
+  <template>
+    <style include="shadow-menu-shared-styles"></style>
+    <style>
+      :host {
+        background: var(--menu-background-color, --primary-background-color);
+        color: var(--menu-color, --primary-text-color);
+        display: block;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 500;
+        @apply(--menu);
+      }
+    </style>
+
+    <!-- write your template here -->
+    <div class="selectable-content">
+      <content></content>
+    </div>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'shadow-menu',
+
+      behaviors: [
+        Polymer.KoaMenuBehavior
+      ]
+    });
+  </script>
+</dom-module>

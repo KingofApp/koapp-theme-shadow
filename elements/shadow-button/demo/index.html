@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>shadow-button demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../../../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../shadow-button.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 650px;
+      }
+
+      .horizontal-section {
+        text-align: center;
+      }
+
+      shadow-button {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      shadow-button.custom:hover {
+        background-color: var(--paper-indigo-100);
+      }
+
+      shadow-button.pink {
+        color: var(--paper-pink-a200);
+      }
+
+      shadow-button.indigo {
+        background-color: var(--paper-indigo-500);
+        color: white;
+      }
+
+      shadow-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+
+      shadow-button.green[active] {
+        background-color: var(--paper-red-500);
+      }
+
+      shadow-button.disabled {
+        color: white;
+      }
+
+      koa-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Buttons can be standar, big, link, toggleable, or disabled</h3>
+      <div class="horizontal-section">
+        <shadow-button>standar</shadow-button>
+        <shadow-button big>big</shadow-button>
+        <shadow-button link>link</shadow-button>
+        <shadow-button toggles>toggles</shadow-button>
+        <shadow-button disabled>disabled</shadow-button>
+      </div>
+
+      <h3>Buttons can have icons</h3>
+      <div class="horizontal-section">
+        <shadow-button><koa-icon icon="check"></koa-icon>standar</shadow-button>
+        <shadow-button big><koa-icon icon="file-download"></koa-icon>big</shadow-button>
+        <shadow-button link><koa-icon icon="file-download"></koa-icon>link</shadow-button>
+        <shadow-button toggles><koa-icon icon="favorite"></koa-icon>toggles</shadow-button>
+        <shadow-button disabled><koa-icon icon="block"></koa-icon>disabled</shadow-button>
+      </div>
+
+      <h3>Buttons can be styled using custom properties</h3>
+      <div class="horizontal-section">
+        <shadow-button class="custom pink">standar</shadow-button>
+        <shadow-button big class="custom indigo">big</shadow-button>
+        <shadow-button link class="custom">link</shadow-button>
+        <shadow-button toggles class="custom green">toggles</shadow-button>
+        <shadow-button disabled class="custom disabled">disabled</shadow-button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-button-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="shadow-button">
+  <template>
+    <style>
+      :host {
+        position: relative;
+        box-sizing: border-box;
+        margin: 5px;
+        display: inline-block;
+        background: transparent;
+        text-align: center;
+        font: inherit;
+        text-transform: uppercase;
+        outline-width: 0;
+        min-width: 1em;
+        min-height: 0.5em;
+        border-radius: 10px;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+        padding: 0.7em 0.57em;
+        background: var(--secondary-text-color);
+        border-bottom: 5px solid #656565;
+        clear: both;
+        color: var(--light-accent-color);
+
+        @apply(--button);
+      }
+
+      :host ::after{
+        clear: both;
+      }
+
+      :host([disabled]) {
+        background: #eaeaea;
+        color: #a8a8a8;
+        opacity: 0.8
+        cursor: auto;
+        pointer-events: none;
+        border-bottom: none;
+        @apply(--button-disabled);
+      }
+
+      :host([pressed]) {
+        margin-top: 5px;
+        top: 4px;
+        border-bottom: none;
+        clear: both;
+        /*background-color: var(--button-background-color-pressed, --secondary-text-color);*/
+      }
+
+      :host(:not([disabled])) {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                    0 1px 5px 0 rgba(0, 0, 0, 0.12),
+                    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      }
+
+      :host([big]) {
+        font-size: 1.2em;
+        padding: 1em 0.8em;
+      }
+
+      :host(:not([big]):not([link]).keyboard-focus) {
+        font-weight: bold;
+
+        @apply(--button-keyboard-focus);
+      }
+
+      :host([big].keyboard-focus) {
+        font-weight: bold;
+
+        @apply(--button-big-keyboard-focus);
+      }
+
+      :host([link].keyboard-focus) {
+        font-weight: bold;
+        @apply(--button-link-keyboard-focus);
+      }
+
+    </style>
+
+    <!-- write your template here -->
+    <content></content>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'shadow-button',
+
+      behaviors: [
+        Polymer.KoaButtonBehavior
+      ]
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <title>shadow-dropdown-menu demo</title>
+
+    <script src="../../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../../../../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../shadow-item/shadow-item.html">
+    <link rel="import" href="../../shadow-menu/shadow-menu.html">
+    <link rel="import" href="../shadow-dropdown-menu.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 500px;
+      }
+
+      .vertical-section {
+        text-align: center;
+        margin: 0 0 40px;
+      }
+
+      shadow-dropdown-menu {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <div class="vertical-section-container centered">
+      <h4>This is a plain shadow-dropdown-menu</h4>
+      <div class="vertical-section">
+        <shadow-dropdown-menu label="Dinosaurs">
+          <shadow-menu class="dropdown-content">
+            <shadow-item>allosaurus</shadow-item>
+            <shadow-item>brontosaurus</shadow-item>
+            <shadow-item>carcharodontosaurus</shadow-item>
+            <shadow-item>diplodocus</shadow-item>
+          </shadow-menu>
+        </shadow-dropdown-menu>
+      </div>
+
+      <h4>You can pre-select a value using the <i>selected</i> attribute</h4>
+      <div class="vertical-section">
+        <shadow-dropdown-menu label="Dinosaurs">
+          <shadow-menu class="dropdown-content" selected="1">
+            <shadow-item>allosaurus</shadow-item>
+            <shadow-item>brontosaurus</shadow-item>
+            <shadow-item>carcharodontosaurus</shadow-item>
+            <shadow-item>diplodocus</shadow-item>
+          </shadow-menu>
+        </shadow-dropdown-menu>
+      </div>
+
+      <h4>You can change the direction in which the menu opens</h4>
+      <div class="vertical-section">
+          <shadow-dropdown-menu label="Upwards and to the left!" vertical-align="bottom" horizontal-align="left">
+            <shadow-menu class="dropdown-content">
+              <shadow-item>allosaurus</shadow-item>
+              <shadow-item>brontosaurus</shadow-item>
+              <shadow-item>carcharodontosaurus</shadow-item>
+              <shadow-item>diplodocus</shadow-item>
+            </shadow-menu>
+          </shadow-dropdown-menu>
+      </div>
+
+      <h4>A shadow-dropdown-menu can be disabled</h4>
+      <div class="vertical-section">
+        <shadow-dropdown-menu label="Disabled dinosaurs" disabled>
+          <shadow-menu class="dropdown-content">
+            <shadow-item>allosaurus</shadow-item>
+            <shadow-item>brontosaurus</shadow-item>
+            <shadow-item>carcharodontosaurus</shadow-item>
+            <shadow-item>diplodocus</shadow-item>
+          </shadow-menu>
+        </shadow-dropdown-menu>
+      </div>
+    </div>
+  </body>
+</html>

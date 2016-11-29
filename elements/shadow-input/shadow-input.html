@@ -1,0 +1,106 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-input-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+<link rel="import" href="shadow-input-char-counter.html">
+<link rel="import" href="shadow-input-container.html">
+<link rel="import" href="shadow-input-error.html">
+
+<dom-module id="shadow-input">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin: 10px;
+      }
+
+      :host label{
+        margin-bottom: 3px;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--primary-color);
+      }
+
+      input::-webkit-input-placeholder {
+        color: var(--input-container-color, --secondary-text-color);
+      }
+
+      input:-moz-placeholder {
+        color: var(--input-container-color, --secondary-text-color);
+      }
+
+      input::-moz-placeholder {
+        color: var(--input-container-color, --secondary-text-color);
+      }
+
+      input:-ms-input-placeholder {
+        color: var(--input-container-color, --secondary-text-color);
+      }
+
+    </style>
+
+    <!-- write your template here -->
+    <shadow-input-container auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]" class="input-container">
+      <label hidden$="[[!label]]">[[label]]</label>
+
+      <content select="[prefix]"></content>
+
+      <input is="iron-input" id="input"
+        aria-labelledby$="[[_ariaLabelledBy]]"
+        aria-describedby$="[[_ariaDescribedBy]]"
+        disabled$="[[disabled]]"
+        title$="[[title]]"
+        bind-value="{{value}}"
+        invalid="{{invalid}}"
+        prevent-invalid-input="[[preventInvalidInput]]"
+        allowed-pattern="[[allowedPattern]]"
+        validator="[[validator]]"
+        type$="[[type]]"
+        pattern$="[[pattern]]"
+        required$="[[required]]"
+        autocomplete$="[[autocomplete]]"
+        autofocus$="[[autofocus]]"
+        inputmode$="[[inputmode]]"
+        minlength$="[[minlength]]"
+        maxlength$="[[maxlength]]"
+        min$="[[min]]"
+        max$="[[max]]"
+        step$="[[step]]"
+        name$="[[name]]"
+        placeholder$="[[placeholder]]"
+        readonly$="[[readonly]]"
+        list$="[[list]]"
+        size$="[[size]]"
+        autocapitalize$="[[autocapitalize]]"
+        autocorrect$="[[autocorrect]]"
+        on-change="_onChange"
+        tabindex$="[[tabindex]]"
+        autosave$="[[autosave]]"
+        results$="[[results]]"
+        accept$="[[accept]]"
+        multiple$="[[multiple]]">
+
+      <content select="[suffix]"></content>
+
+      <template is="dom-if" if="[[errorMessage]]">
+        <shadow-input-error>[[errorMessage]]</shadow-input-error>
+      </template>
+
+      <template is="dom-if" if="[[charCounter]]">
+        <shadow-input-char-counter></shadow-input-char-counter>
+      </template>
+    </shadow-input-container>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'shadow-input',
+
+      behaviors: [
+        Polymer.KoaInputBehavior
+      ]
+    });
+  </script>
+</dom-module>

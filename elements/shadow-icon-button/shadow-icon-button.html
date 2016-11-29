@@ -1,0 +1,56 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-icon-button-behavior.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="shadow-icon-button">
+  <template>
+    <style>
+      :host {
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-block;
+        height: 40px;
+        outline: none;
+        padding: 8px;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+        user-select: none;
+        width: 40px;
+
+        @apply(--icon-button);
+      }
+
+      :host([disabled]) {
+        color: var(--icon-button-disabled-text, --disabled-text-color);
+        cursor: auto;
+        pointer-events: none;
+
+        @apply(--icon-button-disabled);
+      }
+
+      :host([pressed]) {
+        background-color: var(--icon-button-pressed-background-color, --disabled-text-color);
+      }
+
+      koa-icon {
+        --iron-icon-width: 100%;
+        --iron-icon-height: 100%;
+      }
+    </style>
+
+    <!-- write your template here -->
+    <koa-icon id="icon" icon="[[icon]]" alt$="[[alt]]"></koa-icon>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'shadow-icon-button',
+
+      behaviors: [
+        Polymer.KoaIconButtonBehavior
+      ]
+    });
+  </script>
+</dom-module>

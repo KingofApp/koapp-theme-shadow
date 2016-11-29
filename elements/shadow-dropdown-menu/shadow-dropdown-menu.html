@@ -1,0 +1,112 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/koa-behaviors/koa-dropdown-menu-behavior.html">
+<link rel="import" href="../shadow-input/shadow-input.html">
+<link rel="import" href="../shadow-menu-button/shadow-menu-button.html">
+<link rel="import" href="../../styles/default-theme.html">
+
+<dom-module id="shadow-dropdown-menu">
+  <template>
+    <style>
+      :host {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        text-align: left;
+
+        /* NOTE: Both values are needed, since some phones require the value to be `transparent`. */
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+
+        --input-container-input: {
+          box-sizing: border-box;
+          cursor: pointer;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        };
+
+        @apply(--dropdown-menu);
+      }
+
+      :host([disabled]) {
+        @apply(--dropdown-menu-disabled);
+      }
+
+      shadow-menu-button {
+        display: block;
+        @apply(--dropdown-menu-button);
+      }
+
+      shadow-input {
+        padding: 5px 7px;
+        @apply(--dropdown-menu-input);
+      }
+
+      koa-icon {
+        color: var(--disabled-text-color);
+
+        @apply(--dropdown-menu-icon);
+      }
+
+      :host .unfocused-line.shadow-input-container,
+      :host .focused-line.shadow-input-container {
+        background: none;
+      }
+    </style>
+
+    <!-- write your template here -->
+    <!-- this div fulfills an a11y requirement for combobox, do not remove -->
+    <div role="button"></div>
+    <shadow-menu-button
+      id="menuButton"
+      vertical-align="[[verticalAlign]]"
+      horizontal-align="[[horizontalAlign]]"
+      vertical-offset="[[verticalOffset]]"
+      disabled="[[disabled]]"
+      no-animations="[[noAnimations]]"
+      on-iron-select="_onIronSelect"
+      on-iron-deselect="_onIronDeselect"
+      opened="{{opened}}">
+      <div class="dropdown-trigger">
+        <!-- shadow-input has type="text" for a11y, do not remove -->
+        <shadow-input
+          type="text"
+          invalid="[[invalid]]"
+          readonly
+          disabled="[[disabled]]"
+          value="[[selectedItemLabel]]"
+          placeholder="[[placeholder]]"
+          error-message="[[errorMessage]]"
+          label="[[label]]">
+          <koa-icon icon="arrow-drop-down" suffix></koa-icon>
+        </shadow-input>
+      </div>
+      <content id="content" select=".dropdown-content"></content>
+    </shadow-menu-button>
+    <!-- end template -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'shadow-dropdown-menu',
+
+      behaviors: [
+        Polymer.KoaDropdownMenuBehavior
+      ],
+
+      properties: {
+        /**
+         * The value for this element that will be used when submitting in
+         * a form. It is read only, and will always have the same value
+         * as `selectedItemLabel`.
+         */
+        value: {
+          type: String,
+          notify: true,
+          readOnly: true
+        }
+      }
+    });
+  </script>
+</dom-module>
